@@ -6,7 +6,7 @@ header('Access-Control-Allow-Headers: X_Requested_With, Content-Type,XMLHttpRequ
 header('Access-Control-Allow-Credentials:true');
 header('Access-Control-Allow-Methods : POST,OPTIONS,GET');
 
-ini_set('display_errors','1');
+ini_set('display_errors','0');
 
 //方便输出errorCode不为0的json
 function  makeAndEchoWrongJson(int $errorCode, string $message)
