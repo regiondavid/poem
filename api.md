@@ -31,7 +31,7 @@ GET /poetry/content.php
     "errorCode":0,  //errorCode = 0 正常返回诗词。errorCode = 2，已答完所有的诗
     "id"：1,
     "first":"等闲识得东风面",
-    "next":["二月春风似剪刀","万紫千红总是春","长郊草色绿无涯","桃花依旧笑春风"],
+    "next":["二月春风似剪刀","万紫千红总是春","长郊草色绿无涯"],
     "answer":1,//正确答案
     "percent":0.32
 }

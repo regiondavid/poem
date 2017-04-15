@@ -21,7 +21,7 @@
 
 	} elseif (count($_SESSION['numAll'])==0) {	//答完题目了
 		echoJson(['info'=>'恭喜您答完了所有的题目'],2);
-		$numAll  =array_merge($numFive,$numSeven);	//重新开始答题
+		$numAll  =array_merge($_SESSION["numFive"],$_SESSION["numSeven"]);	//重新开始答题
 		die;
 	}
 
@@ -31,34 +31,33 @@
 
 	$allCount = count($numAll);
 	$numFiveCount = count($numFive);
-	$key = rand(0,$allCount);  //选择的诗句的key
+	$key = array_rand($numAll);  //选择的诗句的key
 	if($key < $numFiveCount){	//说明是5言的
 		$searchFive=true;
 		$searchSeven=false;
-		$start=0;	//错误答案id索引的开始和结束
-		$end=$numFiveCount;
+		$arrayForSelect=$_SESSION['numFive'];
 	}else{
 		$searchSeven=true;
 		$searchFive=false;
-		$start=$numFiveCount;	//错误答案id索引的开始和结束
-		$end=$allCount;
+		$arrayForSelect=$_SESSION['numSeven'];
 	}
 
 	$return=[];	//返回的信息
 	//选择题目
 	$contentSql="SELECT title,first,next,victory,defeated FROM po_main WHERE id={$numAll[$key]}";
 	$content   =$dbh->query($contentSql)->fetch(PDO::FETCH_ASSOC);
-	unset($numAll[$key]);	//在all中删除
+	unset($_SESSION['numberAll'][$key]);	//在all中删除
 
 	//随机选择4句古诗
 	$selectedIdList=[];
 	$sqlInString = '';
-	for($i=0;$i<3;$i++){
-		$id=rand($start,$end);
+	for($i=0;$i<2;$i++){
+		$id=$arrayForSelect[array_rand($arrayForSelect)];
 		while(in_array($id,$selectedIdList))
 		{
-			$id=rand($start,$end);
+			$id=$arrayForSelect[array_rand($arrayForSelect)];
 		}
+		$selectedIdList[]=$id;
 		$sqlInString.=' ,'.$id;
 	}
 	//去掉第一个多余的逗号和空格
@@ -70,7 +69,7 @@
 	foreach ($result as $info) {
 		$choice[]=$info['next'];
 	}
-	$answer = rand(0,3);
+	$answer = rand(0,2);
 	array_splice($choice,$answer,0,$content['next']);
 	if($content['defeated']==0){
 		$percent=1;
