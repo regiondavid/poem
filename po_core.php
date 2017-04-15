@@ -12,14 +12,14 @@ ini_set('display_errors','0');
 function  makeAndEchoWrongJson(int $errorCode, string $message)
 {
     $info = ['errorCode'=>$errorCode,'errorMsg'=>$message];
-    header('Content-type: application/json;charset=utf-8');
+    //header('Content-type: application/json;charset=utf-8');
     echo json_encode($info , JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 }
 
 //输出json，可以自己选择验证码
 function echoJson(array $info, $errorCode=false)
 {
-    header('Content-type: application/json;charset=utf-8');
+    //header('Content-type: application/json;charset=utf-8');
     if($errorCode!==false){
         $info['errorCode']=$errorCode;
     }
