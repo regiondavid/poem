@@ -123,24 +123,15 @@ top3.addEventListener("click", function(){
     window.location.reload();
 })
 top4.addEventListener("click", function(){
-    var share = document.getElementById("share");
     var share_mask = document.getElementById("share-mask");  // 阴影画布。
 
     // 分享的标题内容。
     var shareText = document.getElementById("shareTitle").innerText;
     document.title = shareText;
-    if(isWeixin) {
-        wx.onMenuShareAppMessage({
-            title: shareText
-        })
-    }
     
     share_mask.style.display = "block";
-    share.style.display = "block";
-    share.style.background = "white";
     share_mask.onclick = function() {
         this.style.display = "none";
-        share.style.display = "none";
     }
 });
 top5.addEventListener("click", function() {

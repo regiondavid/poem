@@ -49,6 +49,13 @@ body {
     z-index: 1;
     display: none;
 }
+#share-mask > img {
+    position: fixed;
+    right: 2%;
+    top: 0;
+    width: 315px;
+    height: auto;
+}
 
 img:first-child {
     z-index: 99;
