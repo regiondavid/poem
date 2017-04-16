@@ -35,13 +35,17 @@ function showPoetry(somePoetry) {
             }
             setTimeout(function() {
                 getPoetry(); // 更新之后再次请求。
-            }, 1000); // 延迟 1 s。
+            }, 200); // 延迟 1 s。
         };
     })
 }
 
 function getPoetry() {
     if(errorCounts<3) {
+        var answer = document.getElementsByClassName("answer");
+        [].forEach.call(answer, function(ele) {
+            ele.className = "answer animated zoomOutLeft";
+        })
         var request = new XMLHttpRequest();
         if(!request) return false;
         request.open('GET', "http://jcuan.xyz/poetry/content.php", true);
@@ -52,8 +56,10 @@ function getPoetry() {
                 if(request.status == 200 || request.status == 304) {
                     var obj = JSON.parse(request.responseText);
                     if(obj.errorCode == 0) {
-                        initialButton();
-                        showPoetry(obj);
+                        setTimeout(function(){
+                            initialButton();
+                            showPoetry(obj);
+                        }, 1000);
                     }
                 }
             }
@@ -61,14 +67,18 @@ function getPoetry() {
         request.send(null);
     } else {
         var hidden1 = document.getElementsByClassName("hidden1")[1];
-        var hidden2 = document.getElementsByClassName("hidden2");
+        var hidden2 = document.getElementById("top5");
+        var shareBt = document.getElementsByClassName("share-buttons")[0];
+        shareBt.style.display = "block";
         hidden1.style.display = "none";
-        [].forEach.call(hidden2, function(ele) {
-            ele.style.visibility = "visible";
-        })
+        top5.style.display = "block";
+        // [].forEach.call(hidden2, function(ele) {
+        //     ele.style.display = "inline-block";
+        // })
         var xhr = new XMLHttpRequest();
         var formdata = new FormData();
         xhr.open("post","http://jcuan.xyz/poetry/result.php", true);
+        xhr.withCredentials = true;
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200 || xhr.status == 304) {
@@ -101,6 +111,7 @@ function initialButton() {
     buttons[2].style.backgroundPosition = "0 -389px";
     [].forEach.call(buttons, function(ele) {
         ele.style.color = "#666";
+        ele.className = "answer animated fadeInRight";
     })
 }
 function changeBg(index, state) {
