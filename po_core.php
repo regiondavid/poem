@@ -1,7 +1,7 @@
 <?php
 define('POETRY_ROOT','root');
 
-header('Access-Control-Allow-Origin:http://localhost:80,http://120.25.85.240');
+header('Access-Control-Allow-Origin:http://120.25.85.240');
 header('Access-Control-Allow-Headers: X_Requested_With, Content-Type,XMLHttpRequest');
 header('Access-Control-Allow-Credentials:true');
 header('Access-Control-Allow-Methods : POST,OPTIONS,GET');
