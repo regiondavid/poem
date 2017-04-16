@@ -53,7 +53,7 @@
 	$sqlInString = '';
 	for($i=0;$i<2;$i++){
 		$id=$arrayForSelect[array_rand($arrayForSelect)];
-		while(in_array($id,$selectedIdList))
+		while(in_array($id,$selectedIdList) || $id==$key)
 		{
 			$id=$arrayForSelect[array_rand($arrayForSelect)];
 		}
