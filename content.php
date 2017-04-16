@@ -49,28 +49,21 @@
 	unset($_SESSION['numAll'][$key]);	//在all中删除
 
 	//随机选择4句古诗
-	$selectedIdList=[];
+	$selectedNextList=[];
 	$sqlInString = '';
 	for($i=0;$i<2;$i++){
 		$id=$arrayForSelect[array_rand($arrayForSelect)];
-		while(in_array($id,$selectedIdList) || $id==$key)
+		$next=$dbh->query("SELECT next FROM po_main WHERE id = {$id}")->fetch(PDO::FETCH_ASSOC)['next'];
+		while(in_array($next,$selectedNextList))
 		{
 			$id=$arrayForSelect[array_rand($arrayForSelect)];
+			$next=$dbh->query("SELECT next FROM po_main WHERE id = {$id}")->fetch(PDO::FETCH_ASSOC)['next'];
 		}
-		$selectedIdList[]=$id;
-		$sqlInString.=' ,'.$id;
+		$selectedNextList[]=$next;
 	}
-	//去掉第一个多余的逗号和空格
-	$sqlInString=substr($sqlInString,2);
-
-	$choiceSql ="SELECT next FROM po_main WHERE id IN (".$sqlInString.')';
-	$result=$dbh->query($choiceSql)->fetchALL(PDO::FETCH_ASSOC);
-	$choice=[];	//返回的诗句
-	foreach ($result as $info) {
-		$choice[]=$info['next'];
-	}
+	
 	$answer = rand(0,2);
-	array_splice($choice,$answer,0,$content['next']);
+	array_splice($selectedNextList,$answer,0,$content['next']);
 	if($content['defeated']==0){
 		$percent=1;
 	}else{
@@ -80,7 +73,7 @@
 	$return=[
 		'id'=>$key,
 		'first'=>$content['first'],
-		'next'=>$choice,
+		'next'=>$selectedNextList,
 		'answer'=>$answer,
 		'percent'=>(float)sprintf('%.2f',$percent)
 	];
