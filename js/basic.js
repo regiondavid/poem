@@ -4,6 +4,7 @@ var result = {
 }
 
 var errorCounts = 0;
+var likeindex = 0;
 
 function showPoetry(somePoetry) {
     var right_rate = document.getElementById("perRight");
@@ -45,6 +46,7 @@ function getPoetry() {
         if(!request) return false;
         request.open('GET', "http://jcuan.xyz/poetry/content.php", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.withCredentials = true;
         request.onreadystatechange = function() {
             if(request.readyState == 4) {
                 if(request.status == 200 || request.status == 304) {
@@ -135,19 +137,23 @@ top4.addEventListener("click", function(){
     }
 });
 top5.addEventListener("click", function() {
-    this.style.backgroundPosition = "-180px 0";
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://jcuan.xyz/poetry/praise.php", true);
-    xhr.onreadystatechange = function() {
-        if(xhr.readyState == 4) {
-            if (xhr.status == 200 || xhr.status == 304) {
-                var text = JSON.parse(xhr.responseText);
-                if(text.errorCode == 0) {
-                    document.getElementsByClassName("like")[0].innerText = text.praiseNum;
+    likeindex ++;
+    if (likeindex == 1) {
+        this.style.backgroundPosition = "-180px 0";
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://jcuan.xyz/poetry/praise.php", true);
+        xhr.withCredentials = true;
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState == 4) {
+                if (xhr.status == 200 || xhr.status == 304) {
+                    var text = JSON.parse(xhr.responseText);
+                    if(text.errorCode == 0) {
+                        document.getElementsByClassName("like")[0].innerText = text.praiseNum;
+                    }
                 }
             }
         }
+        xhr.send(null);
     }
-    xhr.send(null);
 });
 getPoetry();
