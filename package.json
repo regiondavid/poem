@@ -1,0 +1,23 @@
+{
+  "name": "poetry",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --port 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.starstudio.org/regiondavid/poetry.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack-dev-server": "^2.4.2"
+  },
+  "devDependencies": {
+    "webpack": "^2.4.1"
+  }
+}
