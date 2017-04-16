@@ -46,7 +46,7 @@
 	//选择题目
 	$contentSql="SELECT title,first,next,victory,defeated FROM po_main WHERE id={$numAll[$key]}";
 	$content   =$dbh->query($contentSql)->fetch(PDO::FETCH_ASSOC);
-	unset($_SESSION['numberAll'][$key]);	//在all中删除
+	unset($_SESSION['numAll'][$key]);	//在all中删除
 
 	//随机选择4句古诗
 	$selectedIdList=[];
