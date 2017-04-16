@@ -20,7 +20,7 @@ if(!is_array($trueList) || !is_array($falseList) || count($falseList) >3 || $tru
 }
 
 
-if(!isset($_SESSION['numAll']) || $_SESSION['numAll']+$trueCount+$falseCount != $_SESSION['sum']){
+if(!isset($_SESSION['numAll']) || $_SESSION['sum']-count($_SESSION['numAll'])<3){
 	makeAndEchoWrongJson(1,'有毒，不排除你是一个坏孩子');
 	die;
 }

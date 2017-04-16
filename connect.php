@@ -3,7 +3,7 @@ defined('POETRY_ROOT') or die('forbidden');
 
 define("DSN","mysql:host=localhost;dbname=poetry");
 define("DBUSER","root");
-define("DBPASS","");
+define("DBPASS","shexc825");
 
 try{
     $dbh=new  PDO(DSN,DBUSER,DBPASS);
