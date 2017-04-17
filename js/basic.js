@@ -50,7 +50,7 @@ function getPoetry() {
         document.getElementById("top1").className = "fadeOutUp animated top";
         var request = new XMLHttpRequest();
         if(!request) return false;
-        request.open('GET', "http://jcuan.xyz/poetry/content.php", true);
+        request.open('GET', "/poetry/content.php", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         request.withCredentials = true;
         request.onreadystatechange = function() {
@@ -76,7 +76,7 @@ function getPoetry() {
         top5.style.display = "block";
         var xhr = new XMLHttpRequest();
         var formdata = new FormData();
-        xhr.open("post","http://jcuan.xyz/poetry/result.php", true);
+        xhr.open("post","/poetry/result.php", true);
         xhr.withCredentials = true;
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
@@ -154,7 +154,7 @@ top5.addEventListener("click", function() {
     likeindex ++;
     if (likeindex == 1) {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://jcuan.xyz/poetry/praise.php", true);
+        xhr.open("GET", "/poetry/praise.php", true);
         xhr.withCredentials = true;
         xhr.onreadystatechange = function() {
             if(xhr.readyState == 4) {
