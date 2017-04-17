@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: "微软雅黑";
 }
 
 .container {
@@ -96,19 +97,17 @@ img {
 
 #box #top1{
     text-align: center;
-    color: #333;
-    font-size: 1.4em;
+    color: #3d444f;
+    font-size: 1.8em;
     line-height: 88px;
     white-space: nowrap;
-    font-weight: bolder;
 }
 
 #right-rate {
     text-align: center;
-    color: #333;
-    font-size: 0.4em;
+    color: #3d444f;
+    font-size: 0.8em;
     white-space: nowrap;
-    font-weight: bolder;
 }
 
 #topbox {
@@ -157,7 +156,7 @@ img {
     background-size: 217% 160%;
     background-image: url(../image/heart.png);
     background-repeat: no-repeat;
-    background-position: -80px 0;
+    background-position: -180px 0;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -173,7 +172,7 @@ img {
 #botbox {
     left: 50%;
     transform: translateX(-50%);
-    bottom: 30px;
+    bottom: 50px;
     overflow: hidden;
     position: absolute;
 }
@@ -223,11 +222,11 @@ img {
     color: #666;
 }
 .answer {
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-delay: 0.6s;
-    -webkit-animation-duration: 1s;
-    -moz-animation-duration: 1s;
-    -o-animation-duration: 1s;
+    -webkit-animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    -o-animation-duration: 0.5s;
 }
 
 @media only screen and (min-width:420px) {
