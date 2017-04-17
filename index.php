@@ -11,6 +11,7 @@ $dbh->exec($pvSql);
     <title>poetry</title>
     <meta charset="utf-8" />
     <meta name="viewport" content=" width=device-width, height=device-height, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, minimal-ui,user-scalable=no">
+    <link href="http://lib.baomitu.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="layout/style.css" >
 </head>
 <body>
@@ -26,12 +27,14 @@ $dbh->exec($pvSql);
                     <div id="lead" class="top hidden1"></div>
                 </div>
                 <div id="botbox" class="hidden1">
-                    <div id="ans1" class="answer" value="1">五湖烟景有谁争</div>
-                    <div id="ans2" class="answer" value="2">五湖烟景有谁争</div>
-                    <div id="ans3" class="answer" value="3">五湖烟景有谁争</div>
+                    <div id="ans1" class="answer animated" value="1">五湖烟景有谁争</div>
+                    <div id="ans2" class="answer animated" value="2">五湖烟景有谁争</div>
+                    <div id="ans3" class="answer animated" value="3">五湖烟景有谁争</div>
                 </div>
-                <div id="top3" class="top hidden2">再来一次</div>
-                <div id="top4" class="top hidden2">分享朋友圈</div>
+                <div class="share-buttons">
+                    <button id="top3" class="top hidden2">再来一次</button>
+                    <button id="top4" class="top hidden2">分享朋友圈</button>
+                </div>
                 <p id="shareInfo"></p>
                 <div id="top5" class="top hidden2">
                     <p class="like"></p>

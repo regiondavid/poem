@@ -15,7 +15,7 @@ $trueCount = count($trueList);
 $falseCount = count($falseList);
 //参数不对,答对的题目不可能超过300
 if(!is_array($trueList) || !is_array($falseList) || count($falseList) >3 || $trueCount > 300){
-	makeAndEchoWrongJson(1,'传入参数测试不对');
+	makeAndEchoWrongJson(1,'传入参数格式不对');
 	die;
 }
 

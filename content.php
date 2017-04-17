@@ -61,13 +61,13 @@
 		}
 		$selectedNextList[]=$next;
 	}
-	
+
 	$answer = rand(0,2);
 	array_splice($selectedNextList,$answer,0,$content['next']);
 	if($content['defeated']==0){
 		$percent=1;
 	}else{
-		$percent=$content['victory']/$content['defeated'];
+		$percent=$content['victory']/($content['defeated']+$content['victory']);
 	}
 
 	$return=[
