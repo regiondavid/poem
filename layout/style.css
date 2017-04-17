@@ -7,6 +7,11 @@
     width: auto;
     height: auto;
 }
+#mask {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+}
 
 body {
     *zoom: 1;
@@ -75,9 +80,12 @@ img {
 #lead {
     width: 70%;
     height: 25px;
-    margin: 120px auto 0 auto;
     background: url(../image/tips.png) no-repeat;
     background-size: 100%;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #box {
@@ -158,7 +166,7 @@ img {
     display: none;
     width: 100%;
     position: absolute;
-    bottom: 200px;
+    bottom: 180px;
     text-align: center;
 }
 
