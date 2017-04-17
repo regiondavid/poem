@@ -101,6 +101,7 @@ var imgs = document.getElementsByTagName("img");
 
 function begin() {
     imgs[0].style.display = "none";
+    document.getElementById("mask").style.display = "none";
     imgs[1].style.display = "inherit";
 }
 
