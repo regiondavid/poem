@@ -100,9 +100,9 @@ function getPoetry() {
 var imgs = document.getElementsByTagName("img");
 
 function begin() {
-    imgs[0].style.display = "none";
+    imgs[1].style.display = "none";
     document.getElementById("mask").style.display = "none";
-    imgs[1].style.display = "inherit";
+    imgs[2].style.display = "inherit";
 }
 
 function initialButton() {
@@ -132,7 +132,7 @@ function changeBg(index, state) {
     }
 }
 
-imgs[0].addEventListener('click', begin);
+imgs[1].addEventListener('click', begin);
 var reload = document.getElementById("top3");
 top3.addEventListener("click", function(){
     window.location.reload();
