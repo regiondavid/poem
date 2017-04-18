@@ -48,18 +48,24 @@
 	$content   =$dbh->query($contentSql)->fetch(PDO::FETCH_ASSOC);
 	unset($_SESSION['numAll'][$key]);	//在all中删除
 
-	//随机选择4句古诗
-	$selectedNextList=[];
-	$sqlInString = '';
+	//随机选择2句古诗
+	$selectedIdList=[$key];
 	for($i=0;$i<2;$i++){
 		$id=$arrayForSelect[array_rand($arrayForSelect)];
-		$next=$dbh->query("SELECT next FROM po_main WHERE id = {$id}")->fetch(PDO::FETCH_ASSOC)['next'];
-		while(in_array($next,$selectedNextList))
+		while(in_array($id,$selectedIdList))
 		{
 			$id=$arrayForSelect[array_rand($arrayForSelect)];
-			$next=$dbh->query("SELECT next FROM po_main WHERE id = {$id}")->fetch(PDO::FETCH_ASSOC)['next'];
 		}
-		$selectedNextList[]=$next;
+		$selectedIdList[]=$id;
+	}
+
+	//根据id查诗句
+	$sqlInString = " $selectedIdList[1] , $selectedIdList[2] ";
+	$result = $dbh->query("SELECT next FROM po_main WHERE id in ( {$sqlInString} )")->fetchAll(PDO::FETCH_ASSOC);
+
+	$selectedNextList=[];//已经选择的诗句
+	foreach($result as $poem){
+		$selectedNextList[]=$poem['next'];
 	}
 
 	$answer = rand(0,2);
