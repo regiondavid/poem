@@ -8,14 +8,16 @@ $dbh->exec($pvSql);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>poetry</title>
+    <title>人间四月天猜诗词</title>
     <meta charset="utf-8" />
     <meta name="viewport" content=" width=device-width, height=device-height, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, minimal-ui,user-scalable=no">
     <link href="http://lib.baomitu.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="layout/style.css" >
 </head>
 <body>
-    <div id="shareTitle">别来春半，晓看才子赏诗词。我在这里（XX猜诗词）答对了<span id="shareResult">0</span>句诗词，击败了全球<span id="sharePeople"></span>的人，一起来玩玩吧！</div>
+    <audio src="music/music.mp3" autoplay="autoplay" loop="loop"></audio>
+    <img src="image/begin.jpg" id="shareImg">
+    <div id="shareTitle">我在最美人间四月天中战胜了全球<span id="sharePeople"></span>的人，快来一起玩玩吧！</div>
     <div class="container">
         <div class="main">
             <img src="image/begin.jpg">
@@ -24,7 +26,7 @@ $dbh->exec($pvSql);
             <div id="box">
                 <div id="topbox">
                     <div id="right-rate">此题正确率：<span id="perRight">0</span></div>
-                    <div id="top1" class="top">云想衣裳花想容</div>
+                    <div id="top1" class="animated top">云想衣裳花想容</div>
                 </div>
                 <div id="lead" class="top hidden1"></div>
                 <div id="botbox" class="hidden1">
@@ -48,5 +50,13 @@ $dbh->exec($pvSql);
     </div>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="js/basic.js"></script>
+<script>
+    wx.onMenuShareAppMessage({
+        title: '人间四月天猜诗词，下一个诗人就是你',
+        link: "哈哈哈哈",
+        imgUrl: "https://v2ex.assets.uxengine.net/avatar/d835/6068/167592_large.png?m=1460471532"
+    })
+</script>
+<!--<script src="js/local.js"></script>-->
 </body>
 </html>
