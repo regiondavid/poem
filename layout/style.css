@@ -228,6 +228,9 @@ img {
     -moz-animation-duration: 0.5s;
     -o-animation-duration: 0.5s;
 }
+#shareImg {
+    display: none;
+}
 
 @media only screen and (min-width:420px) {
     .main {
@@ -272,7 +275,6 @@ img {
         margin-left: calc(420px - 2em);
         width: 128px;
         height: 128px;
-        background-image: url(../image/unlike.png)
     }
     #share {
         margin-left: calc(420px - 5em);

@@ -50,7 +50,7 @@ function getPoetry() {
         document.getElementById("top1").className = "fadeOutUp animated top";
         var request = new XMLHttpRequest();
         if(!request) return false;
-        request.open('GET', "/poem/content.php", true);
+        request.open('GET', "http://jcuan.xyz/poetry/content.php", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         request.withCredentials = true;
         request.onreadystatechange = function() {
@@ -76,7 +76,7 @@ function getPoetry() {
         top5.style.display = "block";
         var xhr = new XMLHttpRequest();
         var formdata = new FormData();
-        xhr.open("post","/poem/result.php", true);
+        xhr.open("post","http://jcuan.xyz/poetry/result.php", true);
         xhr.withCredentials = true;
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
@@ -100,9 +100,9 @@ function getPoetry() {
 var imgs = document.getElementsByTagName("img");
 
 function begin() {
-    imgs[1].style.display = "none";
+    imgs[0].style.display = "none";
     document.getElementById("mask").style.display = "none";
-    imgs[2].style.display = "inherit";
+    imgs[1].style.display = "inherit";
 }
 
 function initialButton() {
@@ -132,7 +132,7 @@ function changeBg(index, state) {
     }
 }
 
-imgs[1].addEventListener('click', begin);
+imgs[0].addEventListener('click', begin);
 var reload = document.getElementById("top3");
 top3.addEventListener("click", function(){
     window.location.reload();
@@ -154,7 +154,7 @@ top5.addEventListener("click", function() {
     likeindex ++;
     if (likeindex == 1) {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/poem/praise.php", true);
+        xhr.open("GET", "http://jcuan.xyz/poetry/praise.php", true);
         xhr.withCredentials = true;
         xhr.onreadystatechange = function() {
             if(xhr.readyState == 4) {
