@@ -228,6 +228,9 @@ img {
     -moz-animation-duration: 0.5s;
     -o-animation-duration: 0.5s;
 }
+#shareR {
+    display: none;
+}
 
 @media only screen and (min-width:420px) {
     .main {
