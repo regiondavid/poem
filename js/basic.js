@@ -135,8 +135,7 @@ function changeBg(index, state) {
 imgs[1].addEventListener('click', begin);
 var reload = document.getElementById("againBt");
 againBt.addEventListener("click", function(){
-    window.location.hash = Date.parse(new Date());
-    window.location.reload();
+    window.location.href += "?time=" + Date.parse(new Date());
 })
 shareBt.addEventListener("click", function(){
     var share_mask = document.getElementById("share-mask");  // 阴影画布。
