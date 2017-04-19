@@ -31,7 +31,7 @@
 
 	$allCount = count($numAll);
 	$numFiveCount = count($numFive);
-	$key = array_rand($numAll);  //选择的诗句的key
+	$key = $numAll[array_rand($numAll)];  //选择的诗句的key
 	if($key < $numFiveCount){	//说明是5言的
 		$searchFive=true;
 		$searchSeven=false;
@@ -49,7 +49,7 @@
 	unset($_SESSION['numAll'][$key]);	//在all中删除
 
 	//随机选择2句古诗
-	$selectedIdList=[$key];
+	$selectedIdList=[$numAll[$key]];	//注意key是数组的key,不是id
 	for($i=1;$i<3;$i++){
 		$id=$arrayForSelect[array_rand($arrayForSelect)];
 		while(in_array($id,$selectedIdList))
@@ -69,6 +69,10 @@
 	}
 
 	$answer = rand(0,2);
+/*	if(in_array($content['next'],$selectedNextList)){
+		print_r(['id'=>$key,'selectIdList'=>$selectedIdList,'content'=>$content['next'],'db'=>$result]);
+		die;
+	}*/
 	array_splice($selectedNextList,$answer,0,$content['next']);
 	if($content['defeated']==0){
 		$percent=1;
@@ -77,7 +81,7 @@
 	}
 
 	$return=[
-		'id'=>$key,
+		'id'=>$numAll[$key],
 		'first'=>$content['first'],
 		'next'=>$selectedNextList,
 		'answer'=>$answer,
