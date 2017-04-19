@@ -16,8 +16,8 @@
 
 body {
     *zoom: 1;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
 }
 
@@ -95,7 +95,7 @@ img {
     position: relative;
 }
 
-#box #top1{
+#box #questionTitle{
     text-align: center;
     color: #3d444f;
     font-size: 1.8em;
@@ -128,13 +128,12 @@ img {
     animation: userShow 0.6s 0.6s ease-in both;
 }
 
-#top3, #top4 {
+#againBt, #shareBt {
     width: 120px;
     height: 50px;
     color: #fff;
     font-size: 1.1em;
     outline: none;
-    line-height: 2.7em;
     border: none;
     border-radius: 20px;
     background: url(http://p2.ifengimg.com/l/2017/13/22872fd8681cdfe/button.png) no-repeat;
@@ -147,7 +146,7 @@ img {
     animation: userShow 1s 0.6s ease-in both;
 }
 
-#top5 {
+#likeBt {
     position: absolute;
     display: none;
     bottom: 0;
@@ -165,14 +164,14 @@ img {
     display: none;
     width: 100%;
     position: absolute;
-    bottom: 180px;
+    bottom: 168px;
     text-align: center;
 }
 
 #botbox {
     left: 50%;
     transform: translateX(-50%);
-    bottom: 50px;
+    bottom: 40px;
     overflow: hidden;
     position: absolute;
 }
@@ -215,7 +214,7 @@ img {
 #shareInfo {
     position: absolute;
     bottom: 120px;
-    font-size: 12px;
+    font-size: 13px;
     padding-left: 2em;
     padding-right: 2em;
     text-indent: 2em;
@@ -230,53 +229,4 @@ img {
 }
 #shareImg {
     display: none;
-}
-
-@media only screen and (min-width:420px) {
-    .main {
-        margin: 0 auto;
-        max-width: 420px;
-        height: 768px;
-    }
-    /*img:first-child {display: none;}*/
-    img {
-         position: relative;
-         width: 100%;
-         height: 100%;
-    }
-    #topbox #top2 {
-        left: 145.965px;
-        top: 67px;
-        width: 107px;
-        height: 10px;
-    }
-    #right-rate {
-        max-width: 420px;
-    }
-    #box #top1 {
-        max-width: 420px;
-    }
-    #lead {
-        width: 210px;
-        margin-left: 105px;
-        margin-top: 140px;
-    }
-    #top3, #top4 {
-        width: 127px;
-        height: 46px;
-    }
-    #top3{
-        margin-left: 75px;
-    }
-    #top4 {
-        margin-left: 215px;
-    }
-    #top5 {
-        margin-left: calc(420px - 2em);
-        width: 128px;
-        height: 128px;
-    }
-    #share {
-        margin-left: calc(420px - 5em);
-    }
 }

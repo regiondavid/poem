@@ -47,7 +47,7 @@ function getPoetry() {
         [].forEach.call(answer, function(ele) {
             ele.className = "answer animated fadeOutLeft";
         });
-        document.getElementById("top1").className = "fadeOutUp animated top";
+        document.getElementById("questionTitle").className = "fadeOutUp animated top";
         var request = new XMLHttpRequest();
         if(!request) return false;
         request.open('GET', "http://jcuan.xyz/poetry/content.php", true);
@@ -68,12 +68,12 @@ function getPoetry() {
         }
         request.send(null);
     } else {
-        var hidden1 = document.getElementsByClassName("hidden1")[1];
-        var hidden2 = document.getElementById("top5");
+        var fhidden = document.getElementsByClassName("fhidden")[1];
+        var shidden = document.getElementById("likeBt");
         var shareBt = document.getElementsByClassName("share-buttons")[0];
         shareBt.style.display = "block";
-        hidden1.style.display = "none";
-        top5.style.display = "block";
+        fhidden.style.display = "none";
+        likeBt.style.display = "block";
         var xhr = new XMLHttpRequest();
         var formdata = new FormData();
         xhr.open("post","http://jcuan.xyz/poetry/result.php", true);
@@ -100,14 +100,14 @@ function getPoetry() {
 var imgs = document.getElementsByTagName("img");
 
 function begin() {
-    imgs[0].style.display = "none";
+    imgs[1].style.display = "none";
     document.getElementById("mask").style.display = "none";
-    imgs[1].style.display = "inherit";
+    imgs[2].style.display = "inherit";
 }
 
 function initialButton() {
     var buttons = document.getElementsByClassName("answer");
-    document.getElementById("top1").className = "fadeInUp animated top";
+    document.getElementById("questionTitle").className = "fadeInUp animated top";
     buttons[0].style.backgroundPosition = "0 -98px";
     buttons[1].style.backgroundPosition = "0 -244px";
     buttons[2].style.backgroundPosition = "0 -389px";
@@ -132,12 +132,12 @@ function changeBg(index, state) {
     }
 }
 
-imgs[0].addEventListener('click', begin);
-var reload = document.getElementById("top3");
-top3.addEventListener("click", function(){
+imgs[1].addEventListener('click', begin);
+var reload = document.getElementById("againBt");
+againBt.addEventListener("click", function(){
     window.location.reload();
 })
-top4.addEventListener("click", function(){
+shareBt.addEventListener("click", function(){
     var share_mask = document.getElementById("share-mask");  // 阴影画布。
 
     // 分享的标题内容。
@@ -150,7 +150,7 @@ top4.addEventListener("click", function(){
         this.style.display = "none";
     }
 });
-top5.addEventListener("click", function() {
+likeBt.addEventListener("click", function() {
     likeindex ++;
     if (likeindex == 1) {
         var xhr = new XMLHttpRequest();
