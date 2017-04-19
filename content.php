@@ -50,13 +50,13 @@
 
 	//随机选择2句古诗
 	$selectedIdList=[$key];
-	for($i=0;$i<2;$i++){
+	for($i=1;$i<3;$i++){
 		$id=$arrayForSelect[array_rand($arrayForSelect)];
 		while(in_array($id,$selectedIdList))
 		{
 			$id=$arrayForSelect[array_rand($arrayForSelect)];
 		}
-		$selectedIdList[]=$id;
+		$selectedIdList[$i]=$id;
 	}
 
 	//根据id查诗句
