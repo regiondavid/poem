@@ -16,7 +16,10 @@ function combineParam($url,$pramList)
 function getAccessToken($dbh){
 
     $nowTime = time();
-    $result = $dbh->query('SELECT * from po_wechat WHERE id=1')->fetch(PDO::FETCH_ASSOC);
+    $result = $dbh->query('SELECT * from po_wechat WHERE id=1');
+    if($result){
+        $result=$result->fetch(PDO::FETCH_ASSOC);
+    }
     if(!$result || $nowTime>$result['timeDead']){    //超过有效时间
         $paramList=[
             'appid'=>APPID,
@@ -46,7 +49,10 @@ function getAccessToken($dbh){
 
 function getJsTicket($dbh){
     $nowTime = time();
-    $result = $dbh->query('SELECT * from po_wechat WHERE id=2')->fetch(PDO::FETCH_ASSOC);
+    $result = $dbh->query('SELECT * from po_wechat WHERE id=2');
+    if($result){
+        $result=$result->fetch(PDO::FETCH_ASSOC);
+    }
     if(!$result || $nowTime>$result['timeDead']){    //超过有效时间
         $token = getAccessToken($dbh);
         $url=JSAPI_URL.'access_token='.$token;
