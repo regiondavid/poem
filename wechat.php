@@ -32,9 +32,9 @@ function getAccessToken($dbh){
             $timeDead = $nowTime+$data['expires_in'];
             //token入数据库
             if($result) {
-                $dbh->exec("UPDATE po_wechat SET data=$data[access_token], timeDead=$timeDead WHERE id=1");
+                $dbh->exec("UPDATE po_wechat SET data='$data[access_token]', timeDead=$timeDead WHERE id=1");
             }else{
-                $dbh->exec("INSERT INTO po_wechat (id,data,timeDead) VALUES (1, $data[access_token],$timeDead)");
+                $dbh->exec("INSERT INTO po_wechat (id,data,timeDead) VALUES (1, '$data[access_token]',$timeDead)");
             }
             return $data['access_token'];
         }else{
@@ -58,13 +58,14 @@ function getJsTicket($dbh){
         $url=JSAPI_URL.'access_token='.$token;
         $urlResult = file_get_contents($url);
         $data=json_decode($urlResult,true);
+        print_r($data);
         if(isset($data['errcode']) && $data['errcode']==0){
             $timeDead = $nowTime+$data['expires_in'];
             //token入数据库
             if($result) {
-                $dbh->exec("UPDATE po_wechat SET data=$data[ticket], timeDead=$timeDead WHERE id=2");
+                $dbh->exec("UPDATE po_wechat SET data='$data[ticket]', timeDead=$timeDead WHERE id=2");
             }else{
-                $dbh->exec("INSERT INTO po_wechat (id,data,timeDead) VALUES (2, $data[ticket],$timeDead)");
+                $dbh->exec("INSERT INTO po_wechat (id,data,timeDead) VALUES (2, '$data[ticket]',$timeDead)");
             }
             return $data['ticket'];
         }else{
@@ -111,6 +112,7 @@ function getConfig($dbh){
 }
 
 getConfig($dbh);
+//getAccessToken($dbh);
 
 
 
