@@ -31,7 +31,7 @@
 
 	$allCount = count($numAll);
 	$numFiveCount = count($numFive);
-	$key = $numAll[array_rand($numAll)];  //选择的诗句的key
+	$key = array_rand($numAll);  //选择的诗句的key
 	if($key < $numFiveCount){	//说明是5言的
 		$searchFive=true;
 		$searchSeven=false;
