@@ -26,7 +26,9 @@ function getAccessToken($dbh){
             'secret'=>APP_SECRET
         ];
         $url=combineParam(ACCESS_TOKEN_URL,$paramList);
+        echo $url;
         $result = file_get_contents($url);
+        echo $result;
         $data=json_decode($result,true);
         if(isset($data['access_token']) && isset($data['expires_in'])){
             $timeDead = $nowTime+$data['expires_in'];
