@@ -9,7 +9,7 @@ header('Access-Control-Allow-Methods : POST,OPTIONS,GET');
 ini_set('display_errors','0');
 
 //方便输出errorCode不为0的json
-function  makeAndEchoWrongJson(int $errorCode, string $message)
+function  makeAndEchoWrongJson($errorCode, $message)
 {
     $info = ['errorCode'=>$errorCode,'errorMsg'=>$message];
     //header('Content-type: application/json;charset=utf-8');
@@ -17,7 +17,7 @@ function  makeAndEchoWrongJson(int $errorCode, string $message)
 }
 
 //输出json，可以自己选择验证码
-function echoJson(array $info, $errorCode=false)
+function echoJson($info, $errorCode=false)
 {
     //header('Content-type: application/json;charset=utf-8');
     if($errorCode!==false){
