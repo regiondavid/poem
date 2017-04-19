@@ -9,5 +9,6 @@ src
 .*
 
 wechat.php
+wechat_config.php
 
 connect.php
