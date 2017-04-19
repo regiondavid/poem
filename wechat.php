@@ -26,10 +26,8 @@ function getAccessToken($dbh){
             'secret'=>APP_SECRET
         ];
         $url=combineParam(ACCESS_TOKEN_URL,$paramList);
-        echo $url;
-        $result = file_get_contents($url);
-        echo $result;
-        $data=json_decode($result,true);
+        $urlResult = file_get_contents($url);
+        $data=json_decode($urlResult,true);
         if(isset($data['access_token']) && isset($data['expires_in'])){
             $timeDead = $nowTime+$data['expires_in'];
             //token入数据库
@@ -38,11 +36,11 @@ function getAccessToken($dbh){
             }else{
                 $dbh->exec("INSERT INTO po_wechat (id,data,timeDead) VALUES (1, $data[access_token],$timeDead)");
             }
+            return $data['access_token'];
         }else{
             makeAndEchoWrongJson(1,'获得token出错');
             die;
         }
-        return $data['access_token'];
     }else{  //token还有效
         return $result['data'];
     }
@@ -58,8 +56,8 @@ function getJsTicket($dbh){
     if(!$result || $nowTime>$result['timeDead']){    //超过有效时间
         $token = getAccessToken($dbh);
         $url=JSAPI_URL.'access_token='.$token;
-        $result = file_get_contents($url);
-        $data=json_decode($result,true);
+        $urlResult = file_get_contents($url);
+        $data=json_decode($urlResult,true);
         if(isset($data['errcode']) && $data['errcode']==0){
             $timeDead = $nowTime+$data['expires_in'];
             //token入数据库

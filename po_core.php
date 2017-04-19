@@ -25,5 +25,3 @@ function echoJson($info, $errorCode=false)
     }
     echo json_encode($info , JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 }
-
-//发生异常的时候发邮箱
