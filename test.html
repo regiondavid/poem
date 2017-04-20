@@ -69,47 +69,7 @@
         link: "http://nav.uestc.edu.cn/poem/test.html",
         imgUrl: "http://nav.uestc.edu.cn/poem/image/sharepoem.png"
     }
-    wx.ready(function(){
-        wx.onMenuShareAppMessage({
-            title: shareMsg.title,
-            desc: shareMsg.desc,
-            link: shareMsg.link,
-            imgUrl: shareMsg.imgUrl,
-            success: function() {
-            },
-            cansel: function() {
-            }
-        });
-        wx.onMenuShareTimeline({
-            title: shareMsg.title,
-            link: shareMsg.link,
-            imgUrl: shareMsg.imgUrl,
-            success: function() {
-            },
-            cansel: function() {
-            }
-        });
-        wx.onMenuShareQQ({
-            title: shareMsg.title,
-            desc: shareMsg.desc,
-            link: shareMsg.link,
-            imgUrl: shareMsg.imgUrl,
-            success: function() {
-            },
-            cansel: function() {
-            }
-        });
-        wx.onMenuShareQZone({
-            title: shareMsg.title,
-            desc: shareMsg.desc,
-            link: shareMsg.link,
-            imgUrl: shareMsg.imgUrl,
-            success: function() {
-            },
-            cansel: function() {
-            }
-        })
-    });
+    
 </script>
 <script src="js/basic.js"></script>
 <!--<script src="js/local.js"></script>-->
