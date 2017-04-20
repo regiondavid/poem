@@ -43,9 +43,20 @@
     </div>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
+    var xhr = new XMLHttpRequest();
+    var data;
+    xhr.open("GET","/wechat.php",true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status == 200 || xhr.status == 304) {
+                data = JSON.parse(xhr.responseText);
+            } else alert("error")
+        }
+    }
+    alert(data);
     wx.config({
         debug: true,
-        appId: 'wxdac0fa0d884020b6',
+        appId: '',
         timestamp: '',
         nonceStr: '',
         signature: '',
