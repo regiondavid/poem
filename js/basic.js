@@ -85,6 +85,7 @@ function getPoetry() {
                     if(data.errorCode == 0) {
                         shareResult = result.trueList.length;
                         document.getElementById("sharePeople").innerText = parseInt(data.percent*100)+ "%";
+                        shareMsg.title = document.getElementById("shareTitle").innerText;
                         document.getElementsByClassName("like")[0].innerText = data.praiseNum;
                         document.getElementById("shareInfo").innerText = "恭喜您！您答对了" + shareResult + "首诗词，击败了全球" + document.getElementById("sharePeople").innerText + "的人！喜欢我就点个赞吧！";
                     } else alert(data.errorMsg)
