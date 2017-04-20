@@ -50,31 +50,42 @@ $dbh->exec($pvSql);
     </div>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
-    // wx.config({
-    //     debug: true,
-    //     appId: 'wxdac0fa0d884020b6',
-    //     timestamp: '',
-    //     nonceStr: '',
-    //     signature: '',
-    //     jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone']
-    // });
-    // wx.ready(function(){
-    //     alert("OK!");
-    // })
-    // wx.onMenuShareAppMessage({
-    //     title: "春天诗词知多少",
-    //     desc: "哈哈哈哈",
-    //     link: "http://nav.uestc.edu.cn/poem/",
-    //     imgUrl: "https://v2ex.assets.uxengine.net/avatar/d835/6068/167592_large.png?m=1460471532",
-    //     type: "link",
-    //     dataUrl: "",
-    //     success: function() {
-    //         alert("share to your friends is ok!");
-    //     },
-    //     cansel: function() {
-    //         alert("you cansel share to your friends");
-    //     }
-    // })
+    var xhr = new XMLHttpRequest();
+    var data;
+    xhr.open("GET","/wechat.php",true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status == 200 || xhr.status == 304) {
+                data = JSON.parse(xhr.responseText);
+            } else alert("error")
+        }
+    }
+    alert(data);
+    wx.config({
+        debug: true,
+        appId: '',
+        timestamp: '',
+        nonceStr: '',
+        signature: '',
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone']
+    });
+    wx.ready(function(){
+        alert("OK!");
+    })
+    wx.onMenuShareAppMessage({
+        title: "春天诗词知多少",
+        desc: "哈哈哈哈",
+        link: "http://nav.uestc.edu.cn/poem/",
+        imgUrl: "https://v2ex.assets.uxengine.net/avatar/d835/6068/167592_large.png?m=1460471532",
+        type: "link",
+        dataUrl: "",
+        success: function() {
+            alert("share to your friends is ok!");
+        },
+        cansel: function() {
+            alert("you cansel share to your friends");
+        }
+    })
 </script>
 <script src="js/basic.js"></script>
 <!--<script src="js/local.js"></script>-->
