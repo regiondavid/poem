@@ -52,7 +52,7 @@ $dbh->exec($pvSql);
 <script>
     var xhr = new XMLHttpRequest();
     var data;
-    xhr.open("GET","/wechat.php",true);
+    xhr.open("GET","/poem/wechat.php",true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status == 200 || xhr.status == 304) {
@@ -60,6 +60,7 @@ $dbh->exec($pvSql);
             } else alert("error")
         }
     }
+    xhr.send(null);
     alert(data);
     wx.config({
         debug: true,
