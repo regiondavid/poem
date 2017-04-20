@@ -57,19 +57,18 @@ $dbh->exec($pvSql);
         if (xhr.readyState === 4) {
             if (xhr.status == 200 || xhr.status == 304) {
                 data = JSON.parse(xhr.responseText);
+                wx.config({
+                    debug: true,
+                    appId: data.appId,
+                    timestamp: data.timestamp,
+                    nonceStr: data.timestamp,
+                    signature: data.signature,
+                    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone']
+                });
             } else alert("error")
         }
     }
     xhr.send(null);
-    alert(data);
-    wx.config({
-        debug: true,
-        appId: '',
-        timestamp: '',
-        nonceStr: '',
-        signature: '',
-        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone']
-    });
     wx.ready(function(){
         alert("OK!");
     })
