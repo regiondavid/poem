@@ -88,7 +88,7 @@ function getConfig($dbh){
         $strLen=strlen($pool);
         $chars='';
         for($i=0;$i<16;$i++){
-            $chars.=$pool[rand(0,$strLen)];
+            $chars.=$pool[rand(0,$strLen-1)];
         }
         return $chars;
     };
