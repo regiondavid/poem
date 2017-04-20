@@ -64,21 +64,52 @@
     }
     xhr.send(null);
     wx.ready(function(){
-        alert("OK!");
-        wx.checkJsApi({
-            jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone'],
-            success: function(res) {
-                alert("api ok");
-                alert(res);
-            }
-        })
-        wx.onMenuShareAppMessage({
-            title: "春天诗词知多少",
-            desc: "哈哈哈哈",
+        var shareMsg = {
+            title: document.getElementById("shareTitle").innerText,
+            desc: "人间四月天猜诗词，下一个诗人就是你！",
             link: "http://nav.uestc.edu.cn/poem/test.html",
-            imgUrl: "https://v2ex.assets.uxengine.net/avatar/d835/6068/167592_large.png?m=1460471532",
-            type: "link",
-            dataUrl: "",
+            imgUrl: "http://nav.uestc.edu.cn/poem/image/begin.png"
+        }
+        wx.onMenuShareAppMessage({
+            title: shareMsg.title,
+            desc: shareMsg.desc,
+            link: shareMsg.link,
+            imgUrl: shareMsg.imgUrl,
+            success: function() {
+                alert("share to your friends is ok!");
+            },
+            cansel: function() {
+                alert("you cansel share to your friends");
+            }
+        });
+        wx.onMenuShareTimeline({
+            title: shareMsg.title,
+            link: shareMsg.link,
+            imgUrl: shareMsg.imgUrl,
+            success: function() {
+                alert("share to your friends is ok!");
+            },
+            cansel: function() {
+                alert("you cansel share to your friends");
+            }
+        });
+        wx.onMenuShareQQ({
+            title: shareMsg.title,
+            desc: shareMsg.desc,
+            link: shareMsg.link,
+            imgUrl: shareMsg.imgUrl,
+            success: function() {
+                alert("share to your friends is ok!");
+            },
+            cansel: function() {
+                alert("you cansel share to your friends");
+            }
+        });
+        wx.onMenuShareQZone({
+            title: shareMsg.title,
+            desc: shareMsg.desc,
+            link: shareMsg.link,
+            imgUrl: shareMsg.imgUrl,
             success: function() {
                 alert("share to your friends is ok!");
             },
