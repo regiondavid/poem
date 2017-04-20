@@ -94,7 +94,7 @@ function getConfig($dbh){
     };
     $noncestr=$randomChars();
     $timestamp = time();
-    $url='http://nav.uestc.edu.cn/poem/test.html';
+    $url=isset($_GET['url']) ? urldecode(@(string)$_GET['url']) : 'http://nav.uestc.edu.cn/poem/test.html';
 
     $string1='jsapi_ticket='.$jsTicket.'&noncestr='.$noncestr.'&timestamp='.$timestamp.'&url='.$url;
 
@@ -104,7 +104,8 @@ function getConfig($dbh){
         'appId'=>APPID,
         'timestamp'=>$timestamp,
         'noncestr'=>$noncestr,
-        'signature'=>$sha1
+        'signature'=>$sha1,
+        'url'=>$url
     ];
 
     echoJson($config,0);
