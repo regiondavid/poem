@@ -50,33 +50,34 @@ $dbh->exec($pvSql);
     </div>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
-    // wx.config({
-    //     debug: true,
-    //     appId: 'wxdac0fa0d884020b6',
-    //     timestamp: '',
-    //     nonceStr: '',
-    //     signature: '',
-    //     jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone']
-    // });
-    // wx.ready(function(){
-    //     alert("OK!");
-    // })
-    // wx.onMenuShareAppMessage({
-    //     title: "春天诗词知多少",
-    //     desc: "哈哈哈哈",
-    //     link: "http://nav.uestc.edu.cn/poem/",
-    //     imgUrl: "https://v2ex.assets.uxengine.net/avatar/d835/6068/167592_large.png?m=1460471532",
-    //     type: "link",
-    //     dataUrl: "",
-    //     success: function() {
-    //         alert("share to your friends is ok!");
-    //     },
-    //     cansel: function() {
-    //         alert("you cansel share to your friends");
-    //     }
-    // })
+    var xhr = new XMLHttpRequest();
+    var data;
+    xhr.open("GET","/poem/wechat.php?url="+encodeURIComponent(window.location.href),true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status == 200 || xhr.status == 304) {
+                data = JSON.parse(xhr.responseText);
+                console.log(data)
+                wx.config({
+                    debug: false,
+                    appId: data.appId,
+                    timestamp: data.timestamp,
+                    nonceStr: data.noncestr,
+                    signature: data.signature,
+                    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone']
+                });
+            } else ;
+        }
+    }
+    xhr.send();
+    var shareMsg = {
+        title: "",
+        desc: "人间四月天猜诗词，下一个诗人就是你！",
+        link: "http://nav.uestc.edu.cn/poem/test.html",
+        imgUrl: "http://nav.uestc.edu.cn/poem/image/sharepoem.png"
+    }
+    
 </script>
 <script src="js/basic.js"></script>
-<!--<script src="js/local.js"></script>-->
 </body>
 </html>
