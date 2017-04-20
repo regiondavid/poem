@@ -45,7 +45,7 @@
 <script>
     var xhr = new XMLHttpRequest();
     var data;
-    xhr.open("GET","/poem/wechat.php",true);
+    xhr.open("GET","/poem/wechat.php?url="+encodeURIComponent(window.location.href),true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status == 200 || xhr.status == 304) {
@@ -62,9 +62,9 @@
             } else alert("error")
         }
     }
-    xhr.send("url="+encodeURIComponent(window.location.href));
+    xhr.send();
     var shareMsg = {
-        title: document.getElementById("shareTitle").innerText,
+        title: "",
         desc: "人间四月天猜诗词，下一个诗人就是你！",
         link: "http://nav.uestc.edu.cn/poem/test.html",
         imgUrl: "http://nav.uestc.edu.cn/poem/image/sharepoem.png"
