@@ -55,7 +55,7 @@ function getJsTicket($dbh){
     }
     if(!$result || $nowTime>$result['timeDead']){    //超过有效时间
         $token = getAccessToken($dbh);
-        $url=JSAPI_URL.'access_token='.$token;
+        $url=JSAPI_URL.'&access_token='.$token;
         $urlResult = file_get_contents($url);
         $data=json_decode($urlResult,true);
         print_r($data);
