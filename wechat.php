@@ -58,7 +58,6 @@ function getJsTicket($dbh){
         $url=JSAPI_URL.'&access_token='.$token;
         $urlResult = file_get_contents($url);
         $data=json_decode($urlResult,true);
-        print_r($data);
         if(isset($data['errcode']) && $data['errcode']==0){
             $timeDead = $nowTime+$data['expires_in'];
             //token入数据库
