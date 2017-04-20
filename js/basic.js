@@ -88,6 +88,47 @@ function getPoetry() {
                         shareMsg.title = document.getElementById("shareTitle").innerText;
                         document.getElementsByClassName("like")[0].innerText = data.praiseNum;
                         document.getElementById("shareInfo").innerText = "恭喜您！您答对了" + shareResult + "首诗词，击败了全球" + document.getElementById("sharePeople").innerText + "的人！喜欢我就点个赞吧！";
+                        wx.ready(function(){
+                            wx.onMenuShareAppMessage({
+                                title: shareMsg.title,
+                                desc: shareMsg.desc,
+                                link: shareMsg.link,
+                                imgUrl: shareMsg.imgUrl,
+                                success: function() {
+                                },
+                                cansel: function() {
+                                }
+                            });
+                            wx.onMenuShareTimeline({
+                                title: shareMsg.title,
+                                link: shareMsg.link,
+                                imgUrl: shareMsg.imgUrl,
+                                success: function() {
+                                },
+                                cansel: function() {
+                                }
+                            });
+                            wx.onMenuShareQQ({
+                                title: shareMsg.title,
+                                desc: shareMsg.desc,
+                                link: shareMsg.link,
+                                imgUrl: shareMsg.imgUrl,
+                                success: function() {
+                                },
+                                cansel: function() {
+                                }
+                            });
+                            wx.onMenuShareQZone({
+                                title: shareMsg.title,
+                                desc: shareMsg.desc,
+                                link: shareMsg.link,
+                                imgUrl: shareMsg.imgUrl,
+                                success: function() {
+                                },
+                                cansel: function() {
+                                }
+                            })
+                        });
                     } else alert(data.errorMsg)
                 }
             }
