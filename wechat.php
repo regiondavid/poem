@@ -94,7 +94,7 @@ function getConfig($dbh){
     };
     $noncestr=$randomChars();
     $timestamp = time();
-    $url='http://nav.uestc.edu.cn/poem';
+    $url='http://nav.uestc.edu.cn/poem/test.html';
 
     $string1='jsapi_ticket='.$jsTicket.'&noncestr='.$noncestr.'&timestamp='.$timestamp.'&url='.$url;
 
