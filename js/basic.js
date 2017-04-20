@@ -135,7 +135,7 @@ function changeBg(index, state) {
 function updateUrl(url,key){
     var key= (key || 't') +'=';  //默认是"t"
     var reg=new RegExp(key+'\\d+');  //正则：t=1472286066028
-    var timestamp=+new Date();
+    var timestamp=+data.timestamp;
     if(url.indexOf(key)>-1){ //有时间戳，直接更新
         return url.replace(reg,key+timestamp);
     }else{  //没有时间戳，加上时间戳
