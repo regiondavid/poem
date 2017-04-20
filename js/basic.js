@@ -1,5 +1,5 @@
 var result = {
-    "trueList":[],     //总数随机
+    "trueList":[],
     "falseList":[]
 }
 
@@ -35,8 +35,8 @@ function showPoetry(somePoetry) {
                 this.style.backgroundPosition = changeBg(index, point);
             }
             setTimeout(function() {
-                getPoetry(); // 更新之后再次请求。
-            }, 200); // 延迟 1 s。
+                getPoetry();
+            }, 200);
         };
     })
 }
@@ -175,12 +175,12 @@ function changeBg(index, state) {
 }
 
 function updateUrl(url,key){
-    var key= (key || 't') +'=';  //默认是"t"
-    var reg=new RegExp(key+'\\d+');  //正则：t=1472286066028
+    var key= (key || 't') +'=';
+    var reg=new RegExp(key+'\\d+');
     var timestamp=+data.timestamp;
-    if(url.indexOf(key)>-1){ //有时间戳，直接更新
+    if(url.indexOf(key)>-1){
         return url.replace(reg,key+timestamp);
-    }else{  //没有时间戳，加上时间戳
+    }else{
         if(url.indexOf('\?')>-1){
             var urlArr=url.split('\?');
             if(urlArr[1]){
@@ -201,17 +201,13 @@ function updateUrl(url,key){
 imgs[1].addEventListener('click', begin);
 var reload = document.getElementById("againBt");
 againBt.addEventListener("click", function(){
-    // window.location.href += "?time=" + Date.parse(new Date());
     window.location.href=updateUrl(window.location.href);
 
 })
 shareBt.addEventListener("click", function(){
-    var share_mask = document.getElementById("share-mask");  // 阴影画布。
-
-    // 分享的标题内容。
+    var share_mask = document.getElementById("share-mask");
     var shareText = document.getElementById("shareTitle").innerText;
     document.title = shareText;
-    // "我在最美人间四月天中战胜了全球人，快来一起玩玩吧！"
     
     share_mask.style.display = "block";
     share_mask.onclick = function() {
